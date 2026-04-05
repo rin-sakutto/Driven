@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import Link from "next/link";
 
 const values = [
   {
@@ -90,6 +91,22 @@ export default function About() {
             </motion.div>
           ))}
         </div>
+
+        {/* Company Overview CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, delay: 0.7 }}
+          className="mt-16 flex justify-end"
+        >
+          <Link
+            href="/company"
+            className="group inline-flex items-center gap-4 border border-white/20 px-8 py-4 text-xs tracking-[0.4em] uppercase text-white/60 hover:text-white hover:border-white/60 transition-all duration-300"
+          >
+            COMPANY OVERVIEW
+            <span className="block w-6 h-px bg-white/40 group-hover:w-10 group-hover:bg-white transition-all duration-300" />
+          </Link>
+        </motion.div>
       </div>
     </section>
   );
