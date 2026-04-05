@@ -9,7 +9,7 @@ const items = [
     label: "SS25 — 001",
     tag: "HOODIE",
     ja: "フーディー",
-    price: "¥18,000",
+    price: "$120",
     size: "large",
     gradient:
       "radial-gradient(ellipse 80% 60% at 50% 40%, #1e1e1e 0%, #0a0a0a 100%)",
@@ -19,7 +19,7 @@ const items = [
     label: "SS25 — 002",
     tag: "JACKET",
     ja: "ジャケット",
-    price: "¥28,000",
+    price: "$185",
     size: "small",
     gradient:
       "linear-gradient(135deg, #1c1c1c 0%, #111111 50%, #0e0e0e 100%)",
@@ -29,7 +29,7 @@ const items = [
     label: "SS25 — 003",
     tag: "LONG TEE",
     ja: "ロングTシャツ",
-    price: "¥12,000",
+    price: "$80",
     size: "medium",
     gradient:
       "linear-gradient(180deg, #141414 0%, #0d0d0d 60%, #111111 100%)",
@@ -39,7 +39,7 @@ const items = [
     label: "SS25 — 004",
     tag: "CARGO",
     ja: "カーゴパンツ",
-    price: "¥22,000",
+    price: "$145",
     size: "medium",
     gradient:
       "linear-gradient(160deg, #161616 0%, #101010 55%, #0c0c0c 100%)",
@@ -49,7 +49,7 @@ const items = [
     label: "SS25 — 005",
     tag: "PARKA",
     ja: "パーカー",
-    price: "¥20,000",
+    price: "$135",
     size: "medium",
     gradient:
       "radial-gradient(ellipse 90% 70% at 50% 30%, #1a1a1a 0%, #0b0b0b 100%)",
@@ -59,7 +59,7 @@ const items = [
     label: "SS25 — 006",
     tag: "CAP",
     ja: "帽子",
-    price: "¥8,000",
+    price: "$55",
     size: "small",
     gradient:
       "linear-gradient(180deg, #181818 0%, #0a0a0a 70%, #060606 100%)",
@@ -69,7 +69,7 @@ const items = [
     label: "SS25 — 007",
     tag: "SHOES",
     ja: "靴",
-    price: "¥32,000",
+    price: "$210",
     size: "medium",
     gradient:
       "linear-gradient(120deg, #121212 0%, #0f0f0f 40%, #181818 70%, #0a0a0a 100%)",
