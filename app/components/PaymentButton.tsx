@@ -75,7 +75,52 @@ export default function PaymentButton({ amountJpyc }: PaymentButtonProps) {
 
       {/* RainbowKit connect button */}
       <div className="flex justify-center">
-        <ConnectButton chainStatus="icon" showBalance={false} />
+        <ConnectButton.Custom>
+          {({ account, chain, openAccountModal, openChainModal, openConnectModal, mounted }) => {
+            const ready = mounted;
+            const connected = ready && account && chain;
+
+            if (!connected) {
+              return (
+                <button
+                  type="button"
+                  onClick={openConnectModal}
+                  className="border border-purple-600/60 text-purple-300 text-xs tracking-widest uppercase px-6 py-3 transition-all duration-300 hover:bg-purple-900/40 w-full"
+                >
+                  ウォレットを接続
+                </button>
+              );
+            }
+
+            return (
+              <div className="flex items-center gap-2 w-full">
+                {/* Chain selector — Polygon icon */}
+                <button
+                  type="button"
+                  onClick={openChainModal}
+                  title={chain.name}
+                  className="flex items-center gap-1.5 border border-white/10 px-3 py-2 text-[10px] tracking-widest text-white/50 uppercase hover:border-white/30 transition-colors shrink-0"
+                >
+                  {chain.iconUrl ? (
+                    <img src={chain.iconUrl} alt={chain.name} width={16} height={16} className="rounded-full" />
+                  ) : (
+                    <span className="w-4 h-4 rounded-full bg-purple-600 inline-block" />
+                  )}
+                  <span>{chain.name}</span>
+                </button>
+
+                {/* Account button — less truncated address */}
+                <button
+                  type="button"
+                  onClick={openAccountModal}
+                  className="flex-1 border border-white/10 px-3 py-2 text-[10px] tracking-wider text-white/50 hover:border-white/30 hover:text-white/70 transition-colors text-left font-mono overflow-hidden text-ellipsis whitespace-nowrap"
+                >
+                  {account.address.slice(0, 10)}…{account.address.slice(-8)}
+                </button>
+              </div>
+            );
+          }}
+        </ConnectButton.Custom>
       </div>
 
       {isConnected && (
