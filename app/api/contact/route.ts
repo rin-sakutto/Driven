@@ -28,8 +28,20 @@ export async function POST(req: NextRequest) {
       .split(",")
       .map((e) => e.trim());
 
+    // RESEND_FROM_EMAIL には Resend で検証済みのドメインのアドレスを設定すること。
+    // 未設定の場合は Resend のテスト用送信者にフォールバックするが、
+    // その場合は Resend アカウントの登録メールアドレス宛にしか送信できない。
+    if (!process.env.RESEND_FROM_EMAIL) {
+      console.warn(
+        "RESEND_FROM_EMAIL is not set. Falling back to onboarding@resend.dev " +
+          "(test sender — only delivers to the Resend account's registered email).",
+      );
+    }
+    const fromAddress =
+      process.env.RESEND_FROM_EMAIL ?? "Driven Contact <onboarding@resend.dev>";
+
     const { error } = await resend.emails.send({
-      from: "Driven Contact <onboarding@resend.dev>",
+      from: fromAddress,
       to: toAddresses,
       replyTo: email,
       subject: `[Driven] ${name} からの問い合わせ`,
@@ -43,7 +55,11 @@ export async function POST(req: NextRequest) {
     });
 
     if (error) {
-      console.error("Resend error:", error);
+      console.error("Resend error:", {
+        name: error.name,
+        message: error.message,
+        statusCode: error.statusCode,
+      });
       return NextResponse.json(
         { error: "送信に失敗しました" },
         { status: 500 },
