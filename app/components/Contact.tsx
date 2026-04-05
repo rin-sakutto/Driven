@@ -7,11 +7,33 @@ export default function Contact() {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState("");
   const [form, setForm] = useState({ name: "", email: "", message: "" });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSending(true);
+    setError("");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+
+      if (!res.ok) {
+        const data = await res.json();
+        throw new Error(data.error || "送信に失敗しました");
+      }
+
+      setSubmitted(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "送信に失敗しました");
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -143,12 +165,17 @@ export default function Contact() {
                 </div>
                 <motion.button
                   type="submit"
-                  whileHover={{ scale: 1.02, backgroundColor: "#ffffff", color: "#000000" }}
-                  whileTap={{ scale: 0.98 }}
-                  className="mt-4 border border-white text-white text-xs tracking-widest uppercase px-8 py-4 transition-all duration-300 w-full md:w-auto self-start"
+                  disabled={sending}
+                  whileHover={sending ? {} : { scale: 1.02, backgroundColor: "#ffffff", color: "#000000" }}
+                  whileTap={sending ? {} : { scale: 0.98 }}
+                  className="mt-4 border border-white text-white text-xs tracking-widest uppercase px-8 py-4 transition-all duration-300 w-full md:w-auto self-start disabled:opacity-40 disabled:cursor-not-allowed"
                 >
-                  SEND MESSAGE
+                  {sending ? "SENDING..." : "SEND MESSAGE"}
                 </motion.button>
+
+                {error && (
+                  <p className="text-red-400 text-xs tracking-wider mt-2">{error}</p>
+                )}
               </form>
             )}
           </motion.div>
