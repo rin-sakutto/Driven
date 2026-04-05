@@ -17,6 +17,10 @@ const history = [
   { year: "2025", month: "Feb", event: "SS25 collection launched. Wholesale distribution to major select shops begins." },
 ];
 
+const MAPS_QUERY = "1300-1348+Hendrix+Ave,+Thousand+Oaks,+CA+91360";
+const MAPS_LINK = `https://www.google.com/maps/search/?api=1&query=${MAPS_QUERY}`;
+const MAPS_EMBED = `https://maps.google.com/maps?q=${MAPS_QUERY}&output=embed`;
+
 const overview = [
   { label: "Company", value: "DRIVEN Inc." },
   { label: "Founded", value: "March 2019" },
@@ -167,12 +171,19 @@ export default function CompanyPage() {
                 </p>
                 <address className="not-italic">
                   <p className="text-white/40 text-xs mb-2">CA 91360, USA</p>
-                  <p className="text-white text-lg font-black tracking-wider leading-relaxed mb-1">
-                    1300-1348 Hendrix Ave,
-                  </p>
-                  <p className="text-white text-lg font-black tracking-wider leading-relaxed mb-6">
-                    Thousand Oaks, CA 91360 USA
-                  </p>
+                  <a
+                    href={MAPS_LINK}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group"
+                  >
+                    <p className="text-white text-lg font-black tracking-wider leading-relaxed mb-1 group-hover:text-white/70 transition-colors duration-300">
+                      1300-1348 Hendrix Ave,
+                    </p>
+                    <p className="text-white text-lg font-black tracking-wider leading-relaxed mb-6 group-hover:text-white/70 transition-colors duration-300">
+                      Thousand Oaks, CA 91360 USA
+                    </p>
+                  </a>
                   <p className="text-white/30 text-xs tracking-widest uppercase">
                     DRIVEN STUDIO — THOUSAND OAKS
                   </p>
@@ -202,6 +213,34 @@ export default function CompanyPage() {
               </div>
             </FadeSection>
           </div>
+
+          {/* Google Map embed */}
+          <FadeSection delay={0.3}>
+            <div className="mt-px bg-white/5">
+              <div className="relative w-full h-96 md:h-[480px]">
+                <iframe
+                  src={MAPS_EMBED}
+                  width="100%"
+                  height="100%"
+                  className="border-0 [filter:invert(90%)_hue-rotate(180deg)]"
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="DRIVEN Studio — Thousand Oaks"
+                />
+              </div>
+              <div className="flex justify-end px-6 py-4 bg-black">
+                <a
+                  href={MAPS_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/30 text-[10px] tracking-[0.3em] uppercase hover:text-white/70 transition-colors duration-300"
+                >
+                  OPEN IN GOOGLE MAPS →
+                </a>
+              </div>
+            </div>
+          </FadeSection>
         </div>
       </section>
 
