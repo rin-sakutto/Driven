@@ -1,0 +1,131 @@
+<svg viewBox="0 0 600 780" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#131313"/>
+      <stop offset="100%" stop-color="#0d0d0d"/>
+    </linearGradient>
+    <linearGradient id="bodyL" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#262626"/>
+      <stop offset="60%" stop-color="#1e1e1e"/>
+      <stop offset="100%" stop-color="#181818"/>
+    </linearGradient>
+    <linearGradient id="bodyR" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#242424"/>
+      <stop offset="100%" stop-color="#181818"/>
+    </linearGradient>
+    <linearGradient id="sleeveL" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#232323"/>
+      <stop offset="100%" stop-color="#161616"/>
+    </linearGradient>
+    <linearGradient id="sleeveR" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#222222"/>
+      <stop offset="100%" stop-color="#161616"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="35%" r="55%">
+      <stop offset="0%" stop-color="#232323" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#111111" stop-opacity="1"/>
+    </radialGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#000" flood-opacity="0.65"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="600" height="780" fill="url(#bg)"/>
+  <rect width="600" height="780" fill="url(#glow)" opacity="0.5"/>
+
+  <!-- Ground shadow -->
+  <ellipse cx="300" cy="708" rx="170" ry="13" fill="#000" opacity="0.5"/>
+
+  <!-- ===== KNIT SWEATER ===== -->
+  <g filter="url(#shadow)">
+
+    <!-- Left sleeve -->
+    <path d="M 170 242 L 90 308 L 65 470 L 67 498 L 115 502 L 138 345 L 178 280" fill="url(#sleeveL)" stroke="#2a2a2a" stroke-width="0.6"/>
+    <!-- Left cuff ribs -->
+    <rect x="62" y="493" width="56" height="24" rx="4" fill="#1d1d1d" stroke="#292929" stroke-width="0.5"/>
+    <line x1="65" y1="498" x2="116" y2="498" stroke="#222" stroke-width="0.6"/>
+    <line x1="65" y1="503" x2="116" y2="503" stroke="#222" stroke-width="0.6"/>
+    <line x1="65" y1="508" x2="116" y2="508" stroke="#222" stroke-width="0.6"/>
+    <line x1="65" y1="513" x2="116" y2="513" stroke="#222" stroke-width="0.6"/>
+    <!-- Left sleeve knit lines -->
+    <line x1="90" y1="310" x2="75" y2="415" stroke="#1f1f1f" stroke-width="0.5"/>
+    <line x1="105" y1="295" x2="88" y2="448" stroke="#1f1f1f" stroke-width="0.5"/>
+    <line x1="120" y1="285" x2="105" y2="468" stroke="#1f1f1f" stroke-width="0.5"/>
+    <line x1="138" y1="278" x2="122" y2="478" stroke="#1f1f1f" stroke-width="0.5"/>
+    <line x1="155" y1="274" x2="140" y2="482" stroke="#1f1f1f" stroke-width="0.5"/>
+
+    <!-- Right sleeve -->
+    <path d="M 430 242 L 510 308 L 535 470 L 533 498 L 485 502 L 462 345 L 422 280" fill="url(#sleeveR)" stroke="#2a2a2a" stroke-width="0.6"/>
+    <!-- Right cuff ribs -->
+    <rect x="482" y="493" width="56" height="24" rx="4" fill="#1d1d1d" stroke="#292929" stroke-width="0.5"/>
+    <line x1="484" y1="498" x2="535" y2="498" stroke="#222" stroke-width="0.6"/>
+    <line x1="484" y1="503" x2="535" y2="503" stroke="#222" stroke-width="0.6"/>
+    <line x1="484" y1="508" x2="535" y2="508" stroke="#222" stroke-width="0.6"/>
+    <line x1="484" y1="513" x2="535" y2="513" stroke="#222" stroke-width="0.6"/>
+    <!-- Right sleeve knit lines -->
+    <line x1="510" y1="310" x2="525" y2="415" stroke="#1f1f1f" stroke-width="0.5"/>
+    <line x1="495" y1="295" x2="512" y2="448" stroke="#1f1f1f" stroke-width="0.5"/>
+    <line x1="480" y1="285" x2="495" y2="468" stroke="#1f1f1f" stroke-width="0.5"/>
+    <line x1="462" y1="278" x2="478" y2="478" stroke="#1f1f1f" stroke-width="0.5"/>
+    <line x1="445" y1="274" x2="460" y2="482" stroke="#1f1f1f" stroke-width="0.5"/>
+
+    <!-- Body left half -->
+    <path d="M 170 242 L 178 280 L 178 668 L 300 668 L 300 258 Q 238 250 170 242 Z" fill="url(#bodyL)" stroke="#282828" stroke-width="0.5"/>
+    <!-- Body right half -->
+    <path d="M 430 242 L 422 280 L 422 668 L 300 668 L 300 258 Q 362 250 430 242 Z" fill="url(#bodyR)" stroke="#282828" stroke-width="0.5"/>
+
+    <!-- Body vertical knit texture lines (dense) -->
+    <line x1="192" y1="285" x2="188" y2="662" stroke="#1e1e1e" stroke-width="0.6"/>
+    <line x1="210" y1="282" x2="206" y2="662" stroke="#1e1e1e" stroke-width="0.6"/>
+    <line x1="228" y1="280" x2="224" y2="662" stroke="#1e1e1e" stroke-width="0.6"/>
+    <line x1="246" y1="278" x2="242" y2="662" stroke="#1e1e1e" stroke-width="0.6"/>
+    <line x1="264" y1="277" x2="260" y2="662" stroke="#1e1e1e" stroke-width="0.6"/>
+    <line x1="282" y1="276" x2="278" y2="662" stroke="#1e1e1e" stroke-width="0.6"/>
+    <line x1="318" y1="276" x2="322" y2="662" stroke="#1e1e1e" stroke-width="0.6"/>
+    <line x1="336" y1="277" x2="340" y2="662" stroke="#1e1e1e" stroke-width="0.6"/>
+    <line x1="354" y1="278" x2="358" y2="662" stroke="#1e1e1e" stroke-width="0.6"/>
+    <line x1="372" y1="280" x2="376" y2="662" stroke="#1e1e1e" stroke-width="0.6"/>
+    <line x1="390" y1="282" x2="394" y2="662" stroke="#1e1e1e" stroke-width="0.6"/>
+    <line x1="408" y1="285" x2="412" y2="662" stroke="#1e1e1e" stroke-width="0.6"/>
+
+    <!-- Horizontal knit wale lines -->
+    <line x1="178" y1="310" x2="422" y2="310" stroke="#1d1d1d" stroke-width="0.5"/>
+    <line x1="178" y1="340" x2="422" y2="340" stroke="#1d1d1d" stroke-width="0.5"/>
+    <line x1="178" y1="370" x2="422" y2="370" stroke="#1d1d1d" stroke-width="0.5"/>
+    <line x1="178" y1="400" x2="422" y2="400" stroke="#1d1d1d" stroke-width="0.5"/>
+    <line x1="178" y1="430" x2="422" y2="430" stroke="#1d1d1d" stroke-width="0.5"/>
+    <line x1="178" y1="460" x2="422" y2="460" stroke="#1d1d1d" stroke-width="0.5"/>
+    <line x1="178" y1="490" x2="422" y2="490" stroke="#1d1d1d" stroke-width="0.5"/>
+    <line x1="178" y1="520" x2="422" y2="520" stroke="#1d1d1d" stroke-width="0.5"/>
+    <line x1="178" y1="550" x2="422" y2="550" stroke="#1d1d1d" stroke-width="0.5"/>
+    <line x1="178" y1="580" x2="422" y2="580" stroke="#1d1d1d" stroke-width="0.5"/>
+    <line x1="178" y1="610" x2="422" y2="610" stroke="#1d1d1d" stroke-width="0.5"/>
+    <line x1="178" y1="640" x2="422" y2="640" stroke="#1d1d1d" stroke-width="0.5"/>
+
+    <!-- Bottom hem ribbing -->
+    <rect x="178" y="655" width="244" height="24" rx="3" fill="#1c1c1c" stroke="#282828" stroke-width="0.5"/>
+    <line x1="180" y1="660" x2="420" y2="660" stroke="#222" stroke-width="0.7"/>
+    <line x1="180" y1="666" x2="420" y2="666" stroke="#222" stroke-width="0.7"/>
+    <line x1="180" y1="672" x2="420" y2="672" stroke="#222" stroke-width="0.7"/>
+
+    <!-- Crew neck ribbing -->
+    <path d="M 170 242 Q 230 235 300 232 Q 370 235 430 242 Q 400 230 370 226 Q 340 218 300 216 Q 260 218 230 226 Q 200 230 170 242 Z" fill="#1e1e1e" stroke="#282828" stroke-width="0.6"/>
+    <!-- Neck rib lines -->
+    <path d="M 230 226 Q 265 220 300 218 Q 335 220 370 226" fill="none" stroke="#222" stroke-width="0.7"/>
+    <path d="M 215 231 Q 257 224 300 222 Q 343 224 385 231" fill="none" stroke="#222" stroke-width="0.6"/>
+    <path d="M 192 238 Q 245 230 300 228 Q 355 230 408 238" fill="none" stroke="#222" stroke-width="0.6"/>
+
+    <!-- Shoulder seam -->
+    <path d="M 170 242 Q 235 248 300 250 Q 365 248 430 242" fill="none" stroke="#242424" stroke-width="0.8"/>
+
+    <!-- Chest cable knit panel (subtle diamond pattern) -->
+    <path d="M 268 295 L 300 318 L 332 295 L 300 272 Z" fill="none" stroke="#1f1f1f" stroke-width="0.8"/>
+    <path d="M 268 355 L 300 378 L 332 355 L 300 332 Z" fill="none" stroke="#1f1f1f" stroke-width="0.8"/>
+    <path d="M 268 415 L 300 438 L 332 415 L 300 392 Z" fill="none" stroke="#1f1f1f" stroke-width="0.8"/>
+
+    <!-- DRIVEN text -->
+    <text x="300" y="490" font-family="Arial, sans-serif" font-size="7.5" fill="#1e1e1e" text-anchor="middle" letter-spacing="5" font-weight="bold">DRIVEN</text>
+
+  </g>
+</svg>

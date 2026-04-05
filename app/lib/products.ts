@@ -20,9 +20,10 @@ export const products: Product[] = [
     name: "DRIVEN HOODIE",
     description:
       "重量感のあるコットンフリース。無骨で純粋。着ることは、主張することだ。",
-    price: 28000,
+    price: 185,
     availableSizes: ["S", "M", "L", "XL"],
     shade: "#111111",
+    images: ["/images/products/hoodie.svg"],
   },
   {
     id: 2,
@@ -32,9 +33,10 @@ export const products: Product[] = [
     name: "DRIVEN JACKET",
     description:
       "テクニカルファブリック。どんな状況にも対応する。弱さを許さない一着。",
-    price: 52000,
+    price: 345,
     availableSizes: ["S", "M", "L", "XL"],
     shade: "#1a1a1a",
+    images: ["/images/products/jacket.svg"],
   },
   {
     id: 3,
@@ -44,7 +46,7 @@ export const products: Product[] = [
     name: "DRIVEN TEE",
     description:
       "オーバーサイズシルエット。余白は強さだ。語らずして語るグラフィック。",
-    price: 12000,
+    price: 80,
     availableSizes: ["S", "M", "L", "XL", "XXL"],
     shade: "#0d0d0d",
     images: [
@@ -60,9 +62,10 @@ export const products: Product[] = [
     name: "DRIVEN CARGO",
     description:
       "機能性と美学の融合。余分なポケット、余分な言葉は要らない。動きが語る。",
-    price: 38000,
+    price: 250,
     availableSizes: ["S", "M", "L", "XL"],
     shade: "#161616",
+    images: ["/images/products/cargo.svg"],
   },
   {
     id: 5,
@@ -71,9 +74,10 @@ export const products: Product[] = [
     tileSize: "medium",
     name: "DRIVEN KNIT",
     description: "手で編まれた密度。時間が宿る素材。量産品には出せない温度がある。",
-    price: 34000,
+    price: 225,
     availableSizes: ["S", "M", "L"],
     shade: "#141414",
+    images: ["/images/products/knit.svg"],
   },
   {
     id: 6,
@@ -83,9 +87,10 @@ export const products: Product[] = [
     name: "DRIVEN CAP",
     description:
       "六方向の構造。顔を隠せ、意図を見せろ。スタイルは目線から始まる。",
-    price: 8000,
+    price: 55,
     availableSizes: ["FREE"],
     shade: "#0a0a0a",
+    images: ["/images/products/cap.svg"],
   },
 ];
 

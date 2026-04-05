@@ -208,7 +208,7 @@ export default function PurchaseForm({ product }: { product: Product }) {
           <div className="h-px bg-white/10 my-1" />
           <div className="flex justify-between text-sm tracking-widest text-white font-black uppercase">
             <span>Total</span>
-            <span>¥{product.price.toLocaleString()}</span>
+            <span>${product.price.toLocaleString()}</span>
           </div>
         </div>
 
