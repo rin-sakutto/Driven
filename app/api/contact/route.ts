@@ -28,8 +28,14 @@ export async function POST(req: NextRequest) {
       .split(",")
       .map((e) => e.trim());
 
+    // RESEND_FROM_EMAIL には Resend で検証済みのドメインのアドレスを設定すること。
+    // 未設定の場合は Resend のテスト用送信者にフォールバックするが、
+    // その場合は Resend アカウントの登録メールアドレス宛にしか送信できない。
+    const fromAddress =
+      process.env.RESEND_FROM_EMAIL ?? "Driven Contact <onboarding@resend.dev>";
+
     const { error } = await resend.emails.send({
-      from: "Driven Contact <onboarding@resend.dev>",
+      from: fromAddress,
       to: toAddresses,
       replyTo: email,
       subject: `[Driven] ${name} からの問い合わせ`,
