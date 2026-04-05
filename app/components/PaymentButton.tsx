@@ -7,7 +7,7 @@ import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { parseUnits } from "viem";
 
 // JPYC v2 on Polygon Mainnet
-const JPYC_CONTRACT_ADDRESS = "0x6FBc59d90623376593789049e6f99017C8410225" as const;
+const JPYC_CONTRACT_ADDRESS = "0x6FbC59D90623376593789049E6F99017c8410225" as const;
 const RECIPIENT_ADDRESS = "0xB2E7Fe289fa4a470c67F12600D37D684Bd22D765" as const;
 
 // Minimal ABI — only the transfer function
