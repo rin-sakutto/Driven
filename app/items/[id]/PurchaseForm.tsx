@@ -232,7 +232,7 @@ export default function PurchaseForm({ product }: { product: Product }) {
           <span className="text-white/20 text-[10px] tracking-widest uppercase">または</span>
           <div className="h-px flex-1 bg-white/10" />
         </div>
-        <PaymentButton amountJpyc={product.price} />
+        <PaymentButton amountJpyc={Math.round(product.price * 150)} />
       </div>
     </div>
   );

@@ -25,7 +25,7 @@ const JPYC_ABI = [
 ] as const;
 
 interface PaymentButtonProps {
-  /** Amount in JPYC (e.g. 5000 for ¥5,000). */
+  /** Amount in JPYC (integer, 1 JPYC = ¥1). */
   amountJpyc: number;
 }
 
@@ -60,18 +60,18 @@ export default function PaymentButton({ amountJpyc }: PaymentButtonProps) {
       <motion.button
         type="button"
         onClick={() => setOpen(true)}
-        whileHover={{ scale: 1.02, backgroundColor: "#8b5cf6", color: "#ffffff" }}
+        whileHover={{ scale: 1.02, backgroundColor: "#7c3aed", color: "#ffffff" }}
         whileTap={{ scale: 0.98 }}
-        className="border border-purple-500 text-purple-400 text-xs tracking-widest uppercase px-8 py-4 transition-all duration-300 w-full"
+        className="border border-purple-600/60 text-purple-300 text-xs tracking-widest uppercase px-8 py-4 transition-all duration-300 w-full"
       >
-        💎 ウォレット送金 (JPYC)
+        ウォレット送金 (JPYC)
       </motion.button>
     );
   }
 
   return (
-    <div className="border border-purple-500/30 p-6 flex flex-col gap-4">
-      <p className="text-white/20 text-[10px] tracking-[0.4em] uppercase">— CRYPTO PAYMENT</p>
+    <div className="border border-purple-600/30 bg-purple-950/20 p-6 flex flex-col gap-4">
+      <p className="text-purple-300/50 text-[10px] tracking-[0.4em] uppercase">— CRYPTO PAYMENT · JPYC (Polygon)</p>
 
       {/* RainbowKit connect button */}
       <div className="flex justify-center">
@@ -98,15 +98,15 @@ export default function PaymentButton({ amountJpyc }: PaymentButtonProps) {
               type="button"
               onClick={handlePay}
               disabled={isSending || isConfirming}
-              whileHover={isSending || isConfirming ? {} : { scale: 1.02, backgroundColor: "#8b5cf6", color: "#ffffff" }}
+              whileHover={isSending || isConfirming ? {} : { scale: 1.02, backgroundColor: "#7c3aed", color: "#ffffff" }}
               whileTap={isSending || isConfirming ? {} : { scale: 0.98 }}
-              className="border border-purple-500 text-purple-400 text-xs tracking-widest uppercase px-8 py-4 transition-all duration-300 w-full disabled:opacity-50 disabled:cursor-not-allowed"
+              className="border border-purple-600/60 text-purple-300 text-xs tracking-widest uppercase px-8 py-4 transition-all duration-300 w-full disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isSending ? "署名中..." : isConfirming ? "確認中..." : "JPYC で支払う"}
             </motion.button>
           ) : (
             <div className="flex flex-col gap-2 text-center">
-              <p className="text-green-400 text-xs tracking-widest uppercase">✓ 送金完了</p>
+              <p className="text-green-400 text-xs tracking-widest uppercase">送金完了</p>
               <a
                 href={`https://polygonscan.com/tx/${txHash}`}
                 target="_blank"
