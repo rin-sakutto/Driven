@@ -51,7 +51,7 @@ export async function POST(req: NextRequest) {
             },
             // ドル建て価格を日本円に変換（USD_TO_JPY_RATE 固定）
             // JPY はゼロ小数点通貨のため整数で渡す
-            unit_amount: product.price * USD_TO_JPY_RATE,
+            unit_amount: Math.round(product.price * USD_TO_JPY_RATE),
           },
           quantity: 1,
         },
