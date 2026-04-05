@@ -6,24 +6,24 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
 const history = [
-  { year: "2019", month: "3月", event: "東京都渋谷区にて株式会社ドリブンを設立。" },
-  { year: "2019", month: "9月", event: "ブランド「DRIVEN」を立ち上げ、初のカプセルコレクションを発表。" },
-  { year: "2020", month: "4月", event: "東京・原宿にオフライン展示スペースを開設。" },
-  { year: "2021", month: "2月", event: "SS21コレクションを発表。初の海外顧客獲得。" },
-  { year: "2022", month: "6月", event: "ロサンゼルスにてポップアップストアを開催。" },
-  { year: "2023", month: "1月", event: "ブランド初のフルコレクション「SHADOW 23」を発表。" },
-  { year: "2023", month: "11月", event: "東京・渋谷にフラッグシップスタジオを開設。" },
-  { year: "2024", month: "4月", event: "ベルリン・デザインウィークに参加。欧州市場への本格展開を開始。" },
-  { year: "2025", month: "2月", event: "SS25コレクションを発表。国内外の主要セレクトショップへの卸を開始。" },
+  { year: "2019", month: "Mar", event: "DRIVEN Inc. founded in Thousand Oaks, California." },
+  { year: "2019", month: "Sep", event: "Brand \"DRIVEN\" launched with its first capsule collection." },
+  { year: "2020", month: "Apr", event: "Opened an offline exhibition space in Los Angeles." },
+  { year: "2021", month: "Feb", event: "SS21 collection released. First international customers acquired." },
+  { year: "2022", month: "Jun", event: "Pop-up store held in New York City." },
+  { year: "2023", month: "Jan", event: "First full collection \"SHADOW 23\" presented." },
+  { year: "2023", month: "Nov", event: "Flagship studio opened in Thousand Oaks." },
+  { year: "2024", month: "Apr", event: "Participated in Berlin Design Week. Full-scale expansion into the European market." },
+  { year: "2025", month: "Feb", event: "SS25 collection launched. Wholesale distribution to major select shops begins." },
 ];
 
 const overview = [
-  { label: "社名", value: "株式会社ドリブン（DRIVEN Inc.）" },
-  { label: "設立", value: "2019年3月" },
-  { label: "代表取締役", value: "黒木 凌" },
-  { label: "従業員数", value: "12名" },
-  { label: "事業内容", value: "アパレルブランドの企画・製造・販売" },
-  { label: "所在地", value: "〒150-0001 東京都渋谷区神宮前4-12-7 DRIVENスタジオ 3F" },
+  { label: "Company", value: "DRIVEN Inc." },
+  { label: "Founded", value: "March 2019" },
+  { label: "CEO", value: "Tino" },
+  { label: "Employees", value: "12" },
+  { label: "Business", value: "Apparel brand planning, manufacturing & sales" },
+  { label: "Address", value: "1300-1348 Hendrix Ave, Thousand Oaks, CA 91360 USA" },
 ];
 
 function FadeSection({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
@@ -65,7 +65,7 @@ export default function CompanyPage() {
               transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
               className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-none"
             >
-              <span className="text-white">会社概要</span>
+              <span className="text-white">COMPANY OVERVIEW</span>
             </motion.h1>
           </div>
           <motion.div
@@ -110,7 +110,7 @@ export default function CompanyPage() {
               — HISTORY
             </p>
             <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-white mb-16">
-              会社沿革
+              COMPANY HISTORY
             </h2>
           </FadeSection>
 
@@ -155,7 +155,7 @@ export default function CompanyPage() {
               — LOCATION
             </p>
             <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-white mb-16">
-              所在地
+              LOCATION
             </h2>
           </FadeSection>
 
@@ -166,15 +166,15 @@ export default function CompanyPage() {
                   HEAD OFFICE
                 </p>
                 <address className="not-italic">
-                  <p className="text-white/40 text-xs mb-2">〒150-0001</p>
+                  <p className="text-white/40 text-xs mb-2">CA 91360, USA</p>
                   <p className="text-white text-lg font-black tracking-wider leading-relaxed mb-1">
-                    東京都渋谷区神宮前
+                    1300-1348 Hendrix Ave,
                   </p>
                   <p className="text-white text-lg font-black tracking-wider leading-relaxed mb-6">
-                    4-12-7 DRIVENスタジオ 3F
+                    Thousand Oaks, CA 91360 USA
                   </p>
                   <p className="text-white/30 text-xs tracking-widest uppercase">
-                    4-12-7 Jingumae, Shibuya-ku, Tokyo
+                    DRIVEN STUDIO — THOUSAND OAKS
                   </p>
                 </address>
               </div>
@@ -187,9 +187,9 @@ export default function CompanyPage() {
                 </p>
                 <ul className="flex flex-col gap-4">
                   {[
-                    { line: "東京メトロ千代田線", station: "明治神宮前〈原宿〉駅 徒歩5分" },
-                    { line: "JR山手線", station: "原宿駅 徒歩8分" },
-                    { line: "東京メトロ副都心線", station: "北参道駅 徒歩7分" },
+                    { line: "By Car", station: "US-101 (Ventura Freeway) — Exit Thousand Oaks Blvd" },
+                    { line: "By Bus", station: "Thousand Oaks Transit — Hendrix Ave Stop" },
+                    { line: "From LA", station: "Approx. 40 min via US-101 W" },
                   ].map((access) => (
                     <li key={access.line} className="border-b border-white/5 pb-4 last:border-0 last:pb-0">
                       <p className="text-white/30 text-[10px] tracking-widest uppercase mb-1">

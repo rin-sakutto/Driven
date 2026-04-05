@@ -103,7 +103,7 @@ export default function About() {
             href="/company"
             className="group inline-flex items-center gap-4 border border-white/20 px-8 py-4 text-xs tracking-[0.4em] uppercase text-white/60 hover:text-white hover:border-white/60 transition-all duration-300"
           >
-            会社概要
+            COMPANY OVERVIEW
             <span className="block w-6 h-px bg-white/40 group-hover:w-10 group-hover:bg-white transition-all duration-300" />
           </Link>
         </motion.div>
