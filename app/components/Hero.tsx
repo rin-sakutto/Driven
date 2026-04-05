@@ -6,6 +6,15 @@ import { motion } from "framer-motion";
 export default function Hero() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
+  interface Particle {
+    x: number;
+    y: number;
+    vx: number;
+    vy: number;
+    size: number;
+    opacity: number;
+  }
+
   // Particle background
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -14,7 +23,7 @@ export default function Hero() {
     if (!ctx) return;
 
     let animationFrameId: number;
-    const particles: { x: number; y: number; vx: number; vy: number; size: number; opacity: number }[] = [];
+    const particles: Particle[] = [];
 
     const resize = () => {
       canvas.width = window.innerWidth;
