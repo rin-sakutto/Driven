@@ -2,7 +2,6 @@
 
 import { useState, FormEvent } from "react";
 import { motion } from "framer-motion";
-import Link from "next/link";
 import type { Product } from "../../lib/products";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -10,7 +9,7 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 export default function PurchaseForm({ product }: { product: Product }) {
   const [selectedSize, setSelectedSize] = useState("");
   const [form, setForm] = useState({ name: "", email: "", address: "" });
-  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   const clearError = (field: string) =>
@@ -27,7 +26,7 @@ export default function PurchaseForm({ product }: { product: Product }) {
     return next;
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const errs = validate();
     if (Object.keys(errs).length > 0) {
@@ -35,33 +34,29 @@ export default function PurchaseForm({ product }: { product: Product }) {
       return;
     }
     setErrors({});
-    setSubmitted(true);
-  };
+    setLoading(true);
 
-  if (submitted) {
-    return (
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        className="border border-white/10 p-12 text-center mt-16 md:mt-0"
-      >
-        <div className="text-5xl mb-6">▲</div>
-        <p className="text-white font-black text-lg tracking-widest uppercase mb-2">
-          注文を受け付けた。
-        </p>
-        <p className="text-white/40 text-sm tracking-widest leading-relaxed">
-          確認メールを送信する。<br />
-          待て。
-        </p>
-        <Link
-          href="/"
-          className="inline-block mt-10 text-white/30 hover:text-white/70 text-xs tracking-widest uppercase transition-colors duration-300 border-b border-white/10 pb-1 hover:border-white/30"
-        >
-          ← コレクションに戻る
-        </Link>
-      </motion.div>
-    );
-  }
+    try {
+      const res = await fetch("/api/checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ productId: product.id, size: selectedSize }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok || !data.url) {
+        setErrors({ submit: data.error ?? "決済の開始に失敗しました" });
+        setLoading(false);
+        return;
+      }
+
+      window.location.href = data.url;
+    } catch {
+      setErrors({ submit: "ネットワークエラーが発生しました" });
+      setLoading(false);
+    }
+  };
 
   return (
     <div>
@@ -214,12 +209,19 @@ export default function PurchaseForm({ product }: { product: Product }) {
 
         <motion.button
           type="submit"
-          whileHover={{ scale: 1.02, backgroundColor: "#ffffff", color: "#000000" }}
-          whileTap={{ scale: 0.98 }}
-          className="border border-white text-white text-xs tracking-widest uppercase px-8 py-4 transition-all duration-300 w-full"
+          disabled={loading}
+          whileHover={loading ? {} : { scale: 1.02, backgroundColor: "#ffffff", color: "#000000" }}
+          whileTap={loading ? {} : { scale: 0.98 }}
+          className="border border-white text-white text-xs tracking-widest uppercase px-8 py-4 transition-all duration-300 w-full disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          購入する
+          {loading ? "処理中..." : "購入する"}
         </motion.button>
+
+        {errors.submit && (
+          <p role="alert" className="text-red-400/80 text-[10px] tracking-widest text-center">
+            {errors.submit}
+          </p>
+        )}
       </form>
     </div>
   );
