@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function Hero() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -126,18 +127,37 @@ export default function Hero() {
           COLLECTIVE / APPAREL / UNKNOWN
         </motion.p>
 
-        {/* Main title */}
-        <div className="overflow-hidden mb-6">
-          <motion.h1
-            initial={{ y: 120, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="text-[clamp(4rem,15vw,14rem)] font-black leading-none tracking-tighter text-white"
-            data-text="DRIVEN"
+        {/* Logo */}
+        <motion.div
+          initial={{ scale: 0.8, opacity: 0, filter: "blur(20px)" }}
+          animate={{ scale: 1, opacity: 1, filter: "blur(0px)" }}
+          transition={{ duration: 1.5, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          className="relative mb-6 flex items-center justify-center"
+        >
+          {/* Glow effect behind logo */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <div className="w-[60%] h-[60%] rounded-full bg-white/5 blur-3xl" />
+          </div>
+          <motion.div
+            animate={{
+              filter: [
+                "drop-shadow(0 0 20px rgba(255,255,255,0.1))",
+                "drop-shadow(0 0 40px rgba(255,255,255,0.2))",
+                "drop-shadow(0 0 20px rgba(255,255,255,0.1))",
+              ],
+            }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            className="relative w-[clamp(280px,50vw,700px)] aspect-[1158/772]"
           >
-            DRIVEN
-          </motion.h1>
-        </div>
+            <Image
+              src="/logo_black.png"
+              alt="DRIVEN"
+              fill
+              priority
+              className="object-contain"
+            />
+          </motion.div>
+        </motion.div>
 
         {/* Tagline */}
         <div className="overflow-hidden mb-12">
