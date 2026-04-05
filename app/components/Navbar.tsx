@@ -4,10 +4,11 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
-  { label: "HOME", href: "#hero" },
-  { label: "ABOUT", href: "#about" },
-  { label: "GALLERY", href: "#gallery" },
-  { label: "CONTACT", href: "#contact" },
+  { label: "HOME", href: "/#hero" },
+  { label: "ABOUT", href: "/#about" },
+  { label: "GALLERY", href: "/#gallery" },
+  { label: "CONTACT", href: "/#contact" },
+  { label: "COMPANY", href: "/company" },
 ];
 
 export default function Navbar() {
@@ -32,7 +33,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-16 md:h-20">
         {/* Logo */}
         <motion.a
-          href="#hero"
+          href="/"
           whileHover={{ letterSpacing: "0.3em" }}
           transition={{ duration: 0.3 }}
           className="text-white font-black text-xl md:text-2xl tracking-widest uppercase"
