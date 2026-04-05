@@ -40,6 +40,23 @@ export default function MusicPageContent() {
         >
           <MusicPlayer tracks={tracks} />
         </motion.div>
+
+        {/* コンセプト */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="mt-12 border-t border-white/10 pt-10"
+        >
+          <p className="text-white/20 text-xs uppercase tracking-[0.4em] mb-4 text-center">
+            CONCEPT
+          </p>
+          <p className="text-white/50 text-sm md:text-base leading-relaxed tracking-wide text-center">
+            The concept of &apos;Driven&apos; explores urban solitude and the hidden conflicts within.
+            By cooling down the heat of Latin rhythms into a dark, slow tempo, it captures a &apos;quiet impulse.&apos;
+            It&apos;s an introspective piece, like facing your inner self during a late-night drive.
+          </p>
+        </motion.div>
       </div>
     </section>
   );
