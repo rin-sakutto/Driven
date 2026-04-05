@@ -1,0 +1,89 @@
+export type Product = {
+  id: number;
+  label: string;
+  tag: string;
+  size: "large" | "small" | "medium";
+  name: string;
+  description: string;
+  price: number;
+  availableSizes: string[];
+  shade: string;
+};
+
+export const products: Product[] = [
+  {
+    id: 1,
+    label: "SS25 — 001",
+    tag: "HOODIE",
+    size: "large",
+    name: "DRIVEN HOODIE",
+    description:
+      "重量感のあるコットンフリース。無骨で純粋。着ることは、主張することだ。",
+    price: 28000,
+    availableSizes: ["S", "M", "L", "XL"],
+    shade: "#111111",
+  },
+  {
+    id: 2,
+    label: "SS25 — 002",
+    tag: "JACKET",
+    size: "small",
+    name: "DRIVEN JACKET",
+    description:
+      "テクニカルファブリック。どんな状況にも対応する。弱さを許さない一着。",
+    price: 52000,
+    availableSizes: ["S", "M", "L", "XL"],
+    shade: "#1a1a1a",
+  },
+  {
+    id: 3,
+    label: "SS25 — 003",
+    tag: "TEE",
+    size: "small",
+    name: "DRIVEN TEE",
+    description:
+      "オーバーサイズシルエット。余白は強さだ。語らずして語るグラフィック。",
+    price: 12000,
+    availableSizes: ["S", "M", "L", "XL", "XXL"],
+    shade: "#0d0d0d",
+  },
+  {
+    id: 4,
+    label: "SS25 — 004",
+    tag: "CARGO",
+    size: "medium",
+    name: "DRIVEN CARGO",
+    description:
+      "機能性と美学の融合。余分なポケット、余分な言葉は要らない。動きが語る。",
+    price: 38000,
+    availableSizes: ["S", "M", "L", "XL"],
+    shade: "#161616",
+  },
+  {
+    id: 5,
+    label: "SS25 — 005",
+    tag: "KNIT",
+    size: "medium",
+    name: "DRIVEN KNIT",
+    description: "手で編まれた密度。時間が宿る素材。量産品には出せない温度がある。",
+    price: 34000,
+    availableSizes: ["S", "M", "L"],
+    shade: "#141414",
+  },
+  {
+    id: 6,
+    label: "SS25 — 006",
+    tag: "CAP",
+    size: "small",
+    name: "DRIVEN CAP",
+    description:
+      "六方向の構造。顔を隠せ、意図を見せろ。スタイルは目線から始まる。",
+    price: 8000,
+    availableSizes: ["FREE"],
+    shade: "#0a0a0a",
+  },
+];
+
+export function getProduct(id: number): Product | undefined {
+  return products.find((p) => p.id === id);
+}
