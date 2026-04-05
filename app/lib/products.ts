@@ -8,6 +8,7 @@ export type Product = {
   price: number;
   availableSizes: string[];
   shade: string;
+  images?: string[];
 };
 
 export const products: Product[] = [
@@ -46,6 +47,10 @@ export const products: Product[] = [
     price: 12000,
     availableSizes: ["S", "M", "L", "XL", "XXL"],
     shade: "#0d0d0d",
+    images: [
+      "https://github.com/user-attachments/assets/858c569b-99e6-409a-8ba9-5221f29c102a",
+      "https://github.com/user-attachments/assets/bf4e5c92-ba6f-472a-a789-c41b42fc6a86",
+    ],
   },
   {
     id: 4,

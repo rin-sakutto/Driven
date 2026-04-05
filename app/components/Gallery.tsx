@@ -1,6 +1,7 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import Link from "next/link";
 import { products } from "../lib/products";
@@ -8,6 +9,7 @@ import { products } from "../lib/products";
 export default function Gallery() {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [teeImageIndex, setTeeImageIndex] = useState(0);
 
   return (
     <section id="gallery" className="relative bg-black py-32 md:py-48 overflow-hidden">
@@ -74,6 +76,36 @@ export default function Gallery() {
                   {/* Noise texture overlay */}
                   <div className="absolute inset-0 opacity-[0.03] bg-[url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noise)%22/%3E%3C/svg%3E')]" />
 
+                  {/* Product images (e.g. TEE) */}
+                  {item.images && (
+                    <>
+                      <Image
+                        src={item.images[teeImageIndex]}
+                        alt={`${item.tag} — ${item.label}`}
+                        fill
+                        className="object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"
+                        unoptimized
+                      />
+                      {/* Image toggle dots */}
+                      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex gap-1.5 z-20">
+                        {item.images.map((_, idx) => (
+                          <button
+                            key={idx}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              e.preventDefault();
+                              setTeeImageIndex(idx);
+                            }}
+                            className={`w-1.5 h-1.5 rounded-full transition-colors duration-200 ${
+                              teeImageIndex === idx ? "bg-white" : "bg-white/30"
+                            }`}
+                            aria-label={`View image ${idx + 1}`}
+                          />
+                        ))}
+                      </div>
+                    </>
+                  )}
+
                   {/* Hover overlay */}
                   <motion.div
                     className="absolute inset-0 bg-white/0 group-hover:bg-white/[0.03] transition-colors duration-500"
@@ -88,6 +120,9 @@ export default function Gallery() {
                         </span>
                         <span className="text-white text-sm md:text-base font-black tracking-wider">
                           {item.tag}
+                        </span>
+                        <span className="block text-white/70 text-xs tracking-widest mt-1">
+                          ¥{item.price.toLocaleString()}
                         </span>
                       </div>
                       <motion.div
