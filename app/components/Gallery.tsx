@@ -4,21 +4,76 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
 const items = [
-  { id: 1, label: "SS25 — 001", tag: "HOODIE", size: "large" },
-  { id: 2, label: "SS25 — 002", tag: "JACKET", size: "small" },
-  { id: 3, label: "SS25 — 003", tag: "TEE", size: "small" },
-  { id: 4, label: "SS25 — 004", tag: "CARGO", size: "medium" },
-  { id: 5, label: "SS25 — 005", tag: "KNIT", size: "medium" },
-  { id: 6, label: "SS25 — 006", tag: "CAP", size: "small" },
-];
-
-const shades = [
-  "bg-[#111111]",
-  "bg-[#1a1a1a]",
-  "bg-[#0d0d0d]",
-  "bg-[#161616]",
-  "bg-[#141414]",
-  "bg-[#0a0a0a]",
+  {
+    id: 1,
+    label: "SS25 — 001",
+    tag: "HOODIE",
+    ja: "フーディー",
+    price: "¥18,000",
+    size: "large",
+    gradient:
+      "radial-gradient(ellipse 80% 60% at 50% 40%, #1e1e1e 0%, #0a0a0a 100%)",
+  },
+  {
+    id: 2,
+    label: "SS25 — 002",
+    tag: "JACKET",
+    ja: "ジャケット",
+    price: "¥28,000",
+    size: "small",
+    gradient:
+      "linear-gradient(135deg, #1c1c1c 0%, #111111 50%, #0e0e0e 100%)",
+  },
+  {
+    id: 3,
+    label: "SS25 — 003",
+    tag: "LONG TEE",
+    ja: "ロングTシャツ",
+    price: "¥12,000",
+    size: "medium",
+    gradient:
+      "linear-gradient(180deg, #141414 0%, #0d0d0d 60%, #111111 100%)",
+  },
+  {
+    id: 4,
+    label: "SS25 — 004",
+    tag: "CARGO",
+    ja: "カーゴパンツ",
+    price: "¥22,000",
+    size: "medium",
+    gradient:
+      "linear-gradient(160deg, #161616 0%, #101010 55%, #0c0c0c 100%)",
+  },
+  {
+    id: 5,
+    label: "SS25 — 005",
+    tag: "PARKA",
+    ja: "パーカー",
+    price: "¥20,000",
+    size: "medium",
+    gradient:
+      "radial-gradient(ellipse 90% 70% at 50% 30%, #1a1a1a 0%, #0b0b0b 100%)",
+  },
+  {
+    id: 6,
+    label: "SS25 — 006",
+    tag: "CAP",
+    ja: "帽子",
+    price: "¥8,000",
+    size: "small",
+    gradient:
+      "linear-gradient(180deg, #181818 0%, #0a0a0a 70%, #060606 100%)",
+  },
+  {
+    id: 7,
+    label: "SS25 — 007",
+    tag: "SHOES",
+    ja: "靴",
+    price: "¥32,000",
+    size: "medium",
+    gradient:
+      "linear-gradient(120deg, #121212 0%, #0f0f0f 40%, #181818 70%, #0a0a0a 100%)",
+  },
 ];
 
 export default function Gallery() {
@@ -77,13 +132,14 @@ export default function Gallery() {
             >
               {/* Card */}
               <div
-                className={`${shades[i]} ${
+                className={`${
                   item.size === "large"
                     ? "h-[400px] md:h-[500px]"
                     : item.size === "medium"
                     ? "h-[220px] md:h-[260px]"
                     : "h-[180px] md:h-[220px]"
                 } relative flex items-end p-4 md:p-6 transition-all duration-700 group-hover:brightness-125`}
+                style={{ background: item.gradient }}
               >
                 {/* Noise texture overlay */}
                 <div className="absolute inset-0 opacity-[0.03] bg-[url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noise)%22/%3E%3C/svg%3E')]" />
@@ -100,17 +156,25 @@ export default function Gallery() {
                       <span className="block text-white/20 text-[10px] tracking-widest uppercase mb-1 group-hover:text-white/40 transition-colors duration-300">
                         {item.label}
                       </span>
+                      <span className="text-white/40 text-[10px] tracking-widest uppercase block mb-1">
+                        {item.ja}
+                      </span>
                       <span className="text-white text-sm md:text-base font-black tracking-wider">
                         {item.tag}
                       </span>
                     </div>
-                    <motion.div
-                      initial={{ opacity: 0, x: 10 }}
-                      whileHover={{ opacity: 1, x: 0 }}
-                      className="text-white/60 text-xs tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    >
-                      →
-                    </motion.div>
+                    <div className="flex flex-col items-end gap-2">
+                      <span className="text-white/30 text-[10px] tracking-widest group-hover:text-white/60 transition-colors duration-300">
+                        {item.price}
+                      </span>
+                      <motion.div
+                        initial={{ opacity: 0, x: 10 }}
+                        whileHover={{ opacity: 1, x: 0 }}
+                        className="text-white/60 text-xs tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                      >
+                        →
+                      </motion.div>
+                    </div>
                   </div>
                 </div>
 
