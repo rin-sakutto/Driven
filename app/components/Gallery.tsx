@@ -1,12 +1,23 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 
 const items = [
   { id: 1, label: "SS25 — 001", tag: "HOODIE", size: "large" },
   { id: 2, label: "SS25 — 002", tag: "JACKET", size: "small" },
-  { id: 3, label: "SS25 — 003", tag: "TEE", size: "small" },
+  {
+    id: 3,
+    label: "SS25 — 003",
+    tag: "TEE",
+    size: "small",
+    price: "$40",
+    images: [
+      "https://github.com/user-attachments/assets/858c569b-99e6-409a-8ba9-5221f29c102a",
+      "https://github.com/user-attachments/assets/bf4e5c92-ba6f-472a-a789-c41b42fc6a86",
+    ],
+  },
   { id: 4, label: "SS25 — 004", tag: "CARGO", size: "medium" },
   { id: 5, label: "SS25 — 005", tag: "KNIT", size: "medium" },
   { id: 6, label: "SS25 — 006", tag: "CAP", size: "small" },
@@ -24,6 +35,7 @@ const shades = [
 export default function Gallery() {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [teeImageIndex, setTeeImageIndex] = useState(0);
 
   return (
     <section id="gallery" className="relative bg-black py-32 md:py-48 overflow-hidden">
@@ -88,6 +100,35 @@ export default function Gallery() {
                 {/* Noise texture overlay */}
                 <div className="absolute inset-0 opacity-[0.03] bg-[url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noise)%22/%3E%3C/svg%3E')]" />
 
+                {/* T-shirt images */}
+                {"images" in item && item.images && (
+                  <>
+                    <Image
+                      src={item.images[teeImageIndex]}
+                      alt={`${item.tag} — ${item.label}`}
+                      fill
+                      className="object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"
+                      unoptimized
+                    />
+                    {/* Image toggle dots */}
+                    <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex gap-1.5 z-20">
+                      {item.images.map((_, idx) => (
+                        <button
+                          key={idx}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setTeeImageIndex(idx);
+                          }}
+                          className={`w-1.5 h-1.5 rounded-full transition-colors duration-200 ${
+                            teeImageIndex === idx ? "bg-white" : "bg-white/30"
+                          }`}
+                          aria-label={`View image ${idx + 1}`}
+                        />
+                      ))}
+                    </div>
+                  </>
+                )}
+
                 {/* Hover overlay */}
                 <motion.div
                   className="absolute inset-0 bg-white/0 group-hover:bg-white/[0.03] transition-colors duration-500"
@@ -103,6 +144,11 @@ export default function Gallery() {
                       <span className="text-white text-sm md:text-base font-black tracking-wider">
                         {item.tag}
                       </span>
+                      {"price" in item && item.price && (
+                        <span className="block text-white/70 text-xs tracking-widest mt-1">
+                          {item.price}
+                        </span>
+                      )}
                     </div>
                     <motion.div
                       initial={{ opacity: 0, x: 10 }}
