@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Web3Providers } from "./providers";
 
 export const metadata: Metadata = {
   title: "DRIVEN — We Move. You Follow.",
@@ -13,7 +14,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja" className="h-full antialiased">
-      <body className="min-h-full flex flex-col bg-black text-white">{children}</body>
+      <body className="min-h-full flex flex-col bg-black text-white">
+        <Web3Providers>{children}</Web3Providers>
+      </body>
     </html>
   );
 }

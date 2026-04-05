@@ -3,6 +3,7 @@
 import { useState, FormEvent } from "react";
 import { motion } from "framer-motion";
 import type { Product } from "../../lib/products";
+import PaymentButton from "../../components/PaymentButton";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -223,6 +224,16 @@ export default function PurchaseForm({ product }: { product: Product }) {
           </p>
         )}
       </form>
+
+      {/* Crypto payment option */}
+      <div className="mt-6 flex flex-col gap-3">
+        <div className="flex items-center gap-4">
+          <div className="h-px flex-1 bg-white/10" />
+          <span className="text-white/20 text-[10px] tracking-widest uppercase">または</span>
+          <div className="h-px flex-1 bg-white/10" />
+        </div>
+        <PaymentButton amountJpyc={Math.round(product.price * 150)} />
+      </div>
     </div>
   );
 }
