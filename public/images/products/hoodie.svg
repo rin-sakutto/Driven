@@ -1,0 +1,104 @@
+<svg viewBox="0 0 600 780" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#131313"/>
+      <stop offset="100%" stop-color="#0c0c0c"/>
+    </linearGradient>
+    <linearGradient id="bodyL" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#252525"/>
+      <stop offset="40%" stop-color="#1e1e1e"/>
+      <stop offset="100%" stop-color="#161616"/>
+    </linearGradient>
+    <linearGradient id="bodyR" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#222222"/>
+      <stop offset="100%" stop-color="#161616"/>
+    </linearGradient>
+    <linearGradient id="hoodG" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2a2a2a"/>
+      <stop offset="100%" stop-color="#181818"/>
+    </linearGradient>
+    <linearGradient id="sleeveL" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#232323"/>
+      <stop offset="100%" stop-color="#141414"/>
+    </linearGradient>
+    <linearGradient id="sleeveR" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#222222"/>
+      <stop offset="100%" stop-color="#151515"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="35%" r="55%">
+      <stop offset="0%" stop-color="#242424" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#111111" stop-opacity="1"/>
+    </radialGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#000" flood-opacity="0.7"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="600" height="780" fill="url(#bg)"/>
+  <!-- Subtle gradient glow -->
+  <rect width="600" height="780" fill="url(#glow)" opacity="0.6"/>
+
+  <!-- Ground shadow -->
+  <ellipse cx="300" cy="705" rx="175" ry="14" fill="#000" opacity="0.55"/>
+
+  <!-- ===== HOODIE ===== -->
+  <g filter="url(#shadow)">
+
+    <!-- Left sleeve -->
+    <path d="M 168 235 L 95 295 L 72 465 L 73 492 L 115 497 L 142 335 L 178 275" fill="url(#sleeveL)" stroke="#2d2d2d" stroke-width="0.6"/>
+    <!-- Left cuff -->
+    <rect x="70" y="487" width="47" height="22" rx="4" fill="#1c1c1c" stroke="#2a2a2a" stroke-width="0.5"/>
+    <line x1="73" y1="493" x2="115" y2="493" stroke="#232323" stroke-width="0.5"/>
+    <line x1="73" y1="499" x2="115" y2="499" stroke="#232323" stroke-width="0.5"/>
+    <line x1="73" y1="505" x2="115" y2="505" stroke="#232323" stroke-width="0.5"/>
+
+    <!-- Right sleeve -->
+    <path d="M 432 235 L 505 295 L 528 465 L 527 492 L 485 497 L 458 335 L 422 275" fill="url(#sleeveR)" stroke="#2d2d2d" stroke-width="0.6"/>
+    <!-- Right cuff -->
+    <rect x="483" y="487" width="47" height="22" rx="4" fill="#1c1c1c" stroke="#2a2a2a" stroke-width="0.5"/>
+    <line x1="485" y1="493" x2="528" y2="493" stroke="#232323" stroke-width="0.5"/>
+    <line x1="485" y1="499" x2="528" y2="499" stroke="#232323" stroke-width="0.5"/>
+    <line x1="485" y1="505" x2="528" y2="505" stroke="#232323" stroke-width="0.5"/>
+
+    <!-- Body left half -->
+    <path d="M 168 235 L 178 275 L 178 672 L 300 672 L 300 255 Q 240 248 168 235 Z" fill="url(#bodyL)" stroke="#2c2c2c" stroke-width="0.5"/>
+    <!-- Body right half -->
+    <path d="M 432 235 L 422 275 L 422 672 L 300 672 L 300 255 Q 360 248 432 235 Z" fill="url(#bodyR)" stroke="#2c2c2c" stroke-width="0.5"/>
+
+    <!-- Bottom ribbing -->
+    <path d="M 178 659 Q 300 667 422 659 L 422 678 Q 300 686 178 678 Z" fill="#1c1c1c"/>
+    <line x1="178" y1="663" x2="422" y2="665" stroke="#232323" stroke-width="0.6"/>
+    <line x1="178" y1="669" x2="422" y2="671" stroke="#232323" stroke-width="0.6"/>
+    <line x1="178" y1="675" x2="422" y2="677" stroke="#232323" stroke-width="0.6"/>
+
+    <!-- Hood outer -->
+    <path d="M 168 235 Q 178 155 215 118 Q 255 85 300 82 Q 345 85 385 118 Q 422 155 432 235 Q 400 212 362 205 Q 335 190 300 188 Q 265 190 238 205 Q 200 212 168 235 Z" fill="url(#hoodG)" stroke="#2d2d2d" stroke-width="0.6"/>
+    <!-- Hood inner shadow -->
+    <path d="M 238 205 Q 265 175 300 172 Q 335 175 362 205 Q 335 215 300 218 Q 265 215 238 205 Z" fill="#141414" stroke="#222" stroke-width="0.5"/>
+    <!-- Hood opening curve -->
+    <path d="M 238 205 Q 265 185 300 183 Q 335 185 362 205" fill="none" stroke="#1e1e1e" stroke-width="1.2"/>
+
+    <!-- Shoulders seam -->
+    <path d="M 168 235 Q 234 245 300 248 Q 366 245 432 235" fill="none" stroke="#282828" stroke-width="0.8"/>
+
+    <!-- Center seam -->
+    <line x1="300" y1="218" x2="300" y2="656" stroke="#232323" stroke-width="0.7" stroke-dasharray="5 4"/>
+
+    <!-- Drawstrings -->
+    <line x1="274" y1="183" x2="260" y2="270" stroke="#202020" stroke-width="2"/>
+    <line x1="326" y1="183" x2="340" y2="270" stroke="#202020" stroke-width="2"/>
+    <ellipse cx="259" cy="274" rx="4.5" ry="3.5" fill="#1a1a1a" stroke="#262626" stroke-width="0.5"/>
+    <ellipse cx="341" cy="274" rx="4.5" ry="3.5" fill="#1a1a1a" stroke="#262626" stroke-width="0.5"/>
+
+    <!-- Kangaroo pocket -->
+    <path d="M 218 455 Q 218 436 235 434 L 365 434 Q 382 436 382 455 L 382 550 Q 382 562 365 563 L 235 563 Q 218 562 218 550 Z" fill="#181818" stroke="#242424" stroke-width="0.7"/>
+    <line x1="218" y1="455" x2="382" y2="455" stroke="#212121" stroke-width="0.5"/>
+    <!-- Pocket center split -->
+    <line x1="300" y1="434" x2="300" y2="563" stroke="#212121" stroke-width="0.5" stroke-dasharray="4 3"/>
+
+    <!-- Brand text on chest (ultra subtle) -->
+    <text x="300" y="370" font-family="Arial, sans-serif" font-size="8" fill="#1d1d1d" text-anchor="middle" letter-spacing="6" font-weight="bold">DRIVEN</text>
+
+  </g>
+</svg>

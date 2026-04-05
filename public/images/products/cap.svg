@@ -1,0 +1,97 @@
+<svg viewBox="0 0 600 560" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#131313"/>
+      <stop offset="100%" stop-color="#0d0d0d"/>
+    </linearGradient>
+    <linearGradient id="crownTop" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#282828"/>
+      <stop offset="100%" stop-color="#181818"/>
+    </linearGradient>
+    <linearGradient id="crownLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#252525"/>
+      <stop offset="100%" stop-color="#171717"/>
+    </linearGradient>
+    <linearGradient id="crownRight" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#222222"/>
+      <stop offset="100%" stop-color="#161616"/>
+    </linearGradient>
+    <linearGradient id="brim" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e1e1e"/>
+      <stop offset="100%" stop-color="#111111"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#222222" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#101010" stop-opacity="1"/>
+    </radialGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="18" stdDeviation="24" flood-color="#000" flood-opacity="0.7"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="600" height="560" fill="url(#bg)"/>
+  <rect width="600" height="560" fill="url(#glow)" opacity="0.55"/>
+
+  <!-- Ground shadow -->
+  <ellipse cx="295" cy="490" rx="175" ry="12" fill="#000" opacity="0.5"/>
+
+  <!-- ===== 6-PANEL CAP (front-facing 3/4 view) ===== -->
+  <g filter="url(#shadow)">
+
+    <!-- BRIM (flat / slightly curved) -->
+    <path d="M 115 360 Q 100 362 92 370 Q 88 378 95 384 Q 110 390 135 392 L 420 392 Q 430 392 435 385 L 460 365 Q 462 358 455 355 L 430 352 Q 280 345 115 360 Z" fill="url(#brim)" stroke="#232323" stroke-width="0.7"/>
+    <!-- Brim underside (visible from slightly below) -->
+    <path d="M 95 384 Q 110 392 135 394 L 420 394 Q 432 394 437 387 L 435 390 Q 432 398 420 398 L 135 398 Q 108 398 92 390 Z" fill="#111111" stroke="#1e1e1e" stroke-width="0.5"/>
+    <!-- Brim edge stitching -->
+    <path d="M 100 386 Q 118 394 142 396 L 418 396 Q 428 396 433 389" fill="none" stroke="#191919" stroke-width="1" stroke-dasharray="4 3"/>
+    <!-- Brim top stitching line -->
+    <path d="M 118 362 Q 280 355 436 360" fill="none" stroke="#202020" stroke-width="0.6" stroke-dasharray="3 2"/>
+
+    <!-- CROWN BACK RIGHT panel -->
+    <path d="M 420 360 Q 448 340 458 305 Q 465 270 455 240 Q 448 215 435 200 Q 420 185 410 175 L 372 150 L 345 145 L 330 148 Q 340 165 348 190 Q 358 220 362 260 Q 366 305 362 345 L 360 360 Z" fill="url(#crownRight)" stroke="#282828" stroke-width="0.6"/>
+
+    <!-- CROWN RIGHT SIDE panel -->
+    <path d="M 345 145 L 330 148 L 310 150 L 295 152 Q 298 172 302 198 Q 308 235 310 275 Q 312 318 308 355 L 360 360 Q 366 305 362 260 Q 358 220 348 190 Q 340 165 330 148 Z" fill="url(#crownRight)" stroke="#282828" stroke-width="0.5"/>
+
+    <!-- CROWN FRONT RIGHT panel -->
+    <path d="M 295 152 L 280 150 L 265 148 Q 255 165 250 195 Q 245 228 248 268 Q 250 308 248 348 L 308 355 Q 312 318 310 275 Q 308 235 302 198 Q 298 172 295 152 Z" fill="url(#crownTop)" stroke="#272727" stroke-width="0.5"/>
+
+    <!-- CROWN FRONT LEFT panel (most visible) -->
+    <path d="M 265 148 L 250 148 L 228 150 Q 195 155 175 170 Q 155 186 148 208 Q 140 232 142 260 Q 145 295 155 328 Q 162 350 168 360 L 248 348 Q 250 308 248 268 Q 245 228 250 195 Q 255 165 265 148 Z" fill="url(#crownLeft)" stroke="#262626" stroke-width="0.5"/>
+
+    <!-- CROWN LEFT SIDE (partially visible) -->
+    <path d="M 168 360 L 155 328 Q 145 295 142 260 Q 140 232 148 208 Q 115 258 112 310 Q 110 345 115 360 Z" fill="url(#crownLeft)" stroke="#262626" stroke-width="0.5"/>
+
+    <!-- SWEATBAND at base of crown -->
+    <path d="M 115 360 Q 280 350 420 360 L 420 372 Q 280 364 115 372 Z" fill="#1a1a1a" stroke="#252525" stroke-width="0.5"/>
+
+    <!-- Panel seams (stitching lines) -->
+    <!-- Center front seam -->
+    <path d="M 268 148 L 250 348" stroke="#212121" stroke-width="0.9" stroke-dasharray="4 3"/>
+    <!-- Left-center panel seam -->
+    <path d="M 228 150 L 168 360" stroke="#212121" stroke-width="0.8" stroke-dasharray="4 3"/>
+    <!-- Right-center panel seam -->
+    <path d="M 310 150 L 308 355" stroke="#212121" stroke-width="0.8" stroke-dasharray="4 3"/>
+    <!-- Far right panel seam -->
+    <path d="M 345 145 L 360 360" stroke="#212121" stroke-width="0.8" stroke-dasharray="4 3"/>
+
+    <!-- Crown button (top) -->
+    <ellipse cx="300" cy="143" rx="10" ry="7" fill="#1c1c1c" stroke="#2a2a2a" stroke-width="0.8"/>
+    <ellipse cx="300" cy="143" rx="6" ry="4" fill="#181818"/>
+    <circle cx="300" cy="143" r="2" fill="#151515"/>
+
+    <!-- Front panel brand patch -->
+    <text x="225" y="260" font-family="Arial, sans-serif" font-size="14" fill="#1e1e1e" letter-spacing="4" font-weight="900">DRIVEN</text>
+    <!-- Embroidery outline effect -->
+    <text x="225" y="260" font-family="Arial, sans-serif" font-size="14" fill="none" letter-spacing="4" font-weight="900" stroke="#252525" stroke-width="0.5">DRIVEN</text>
+
+    <!-- Sizing label detail on back (barely visible) -->
+    <rect x="390" y="358" width="22" height="6" rx="1" fill="#181818" opacity="0.5"/>
+
+    <!-- Closure strap suggestion at back -->
+    <path d="M 452 364 L 470 364 Q 476 366 476 370 Q 476 374 470 376 L 452 376" fill="none" stroke="#222" stroke-width="1"/>
+    <rect x="468" y="366" width="10" height="8" rx="2" fill="#1c1c1c" stroke="#262626" stroke-width="0.5"/>
+
+  </g>
+</svg>

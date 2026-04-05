@@ -23,6 +23,7 @@ export const products: Product[] = [
     price: 185,
     availableSizes: ["S", "M", "L", "XL"],
     shade: "#111111",
+    images: ["/images/products/hoodie.svg"],
   },
   {
     id: 2,
@@ -35,6 +36,7 @@ export const products: Product[] = [
     price: 345,
     availableSizes: ["S", "M", "L", "XL"],
     shade: "#1a1a1a",
+    images: ["/images/products/jacket.svg"],
   },
   {
     id: 3,
@@ -63,6 +65,7 @@ export const products: Product[] = [
     price: 250,
     availableSizes: ["S", "M", "L", "XL"],
     shade: "#161616",
+    images: ["/images/products/cargo.svg"],
   },
   {
     id: 5,
@@ -74,6 +77,7 @@ export const products: Product[] = [
     price: 225,
     availableSizes: ["S", "M", "L"],
     shade: "#141414",
+    images: ["/images/products/knit.svg"],
   },
   {
     id: 6,
@@ -86,6 +90,7 @@ export const products: Product[] = [
     price: 55,
     availableSizes: ["FREE"],
     shade: "#0a0a0a",
+    images: ["/images/products/cap.svg"],
   },
 ];
 

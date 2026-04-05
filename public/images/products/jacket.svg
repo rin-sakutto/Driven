@@ -1,0 +1,121 @@
+<svg viewBox="0 0 600 780" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141414"/>
+      <stop offset="100%" stop-color="#0d0d0d"/>
+    </linearGradient>
+    <linearGradient id="bodyL" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#272727"/>
+      <stop offset="100%" stop-color="#181818"/>
+    </linearGradient>
+    <linearGradient id="bodyR" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#252525"/>
+      <stop offset="100%" stop-color="#171717"/>
+    </linearGradient>
+    <linearGradient id="lapelL" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2e2e2e"/>
+      <stop offset="100%" stop-color="#1a1a1a"/>
+    </linearGradient>
+    <linearGradient id="lapelR" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2a2a2a"/>
+      <stop offset="100%" stop-color="#1b1b1b"/>
+    </linearGradient>
+    <linearGradient id="sleeveL" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#242424"/>
+      <stop offset="100%" stop-color="#151515"/>
+    </linearGradient>
+    <linearGradient id="sleeveR" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#232323"/>
+      <stop offset="100%" stop-color="#151515"/>
+    </linearGradient>
+    <linearGradient id="collar" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#303030"/>
+      <stop offset="100%" stop-color="#1e1e1e"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="30%" r="55%">
+      <stop offset="0%" stop-color="#252525" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#111111" stop-opacity="1"/>
+    </radialGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#000" flood-opacity="0.7"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="600" height="780" fill="url(#bg)"/>
+  <rect width="600" height="780" fill="url(#glow)" opacity="0.5"/>
+
+  <!-- Ground shadow -->
+  <ellipse cx="300" cy="702" rx="170" ry="13" fill="#000" opacity="0.5"/>
+
+  <!-- ===== TECHNICAL JACKET ===== -->
+  <g filter="url(#shadow)">
+
+    <!-- Left sleeve -->
+    <path d="M 172 232 L 92 298 L 68 462 L 70 492 L 115 496 L 140 338 L 180 272" fill="url(#sleeveL)" stroke="#2d2d2d" stroke-width="0.6"/>
+    <!-- Left cuff band -->
+    <rect x="66" y="488" width="51" height="20" rx="3" fill="#1d1d1d" stroke="#2b2b2b" stroke-width="0.6"/>
+    <!-- Left sleeve seam -->
+    <path d="M 148 310 L 106 455" stroke="#222" stroke-width="0.8" stroke-dasharray="4 3"/>
+    <!-- Left cuff zipper -->
+    <rect x="76" y="491" width="18" height="3" rx="1" fill="#1a1a1a"/>
+    <rect x="90" y="492" width="6" height="5" rx="1" fill="#222222"/>
+
+    <!-- Right sleeve -->
+    <path d="M 428 232 L 508 298 L 532 462 L 530 492 L 485 496 L 460 338 L 420 272" fill="url(#sleeveR)" stroke="#2d2d2d" stroke-width="0.6"/>
+    <!-- Right cuff band -->
+    <rect x="483" y="488" width="51" height="20" rx="3" fill="#1d1d1d" stroke="#2b2b2b" stroke-width="0.6"/>
+    <!-- Right sleeve seam -->
+    <path d="M 452 310 L 494 455" stroke="#222" stroke-width="0.8" stroke-dasharray="4 3"/>
+
+    <!-- Body left half -->
+    <path d="M 172 232 L 180 272 L 180 672 L 300 672 L 300 250 Q 238 245 172 232 Z" fill="url(#bodyL)" stroke="#2a2a2a" stroke-width="0.5"/>
+    <!-- Body right half -->
+    <path d="M 428 232 L 420 272 L 420 672 L 300 672 L 300 250 Q 362 245 428 232 Z" fill="url(#bodyR)" stroke="#2a2a2a" stroke-width="0.5"/>
+
+    <!-- Bottom hem band -->
+    <rect x="180" y="662" width="240" height="18" rx="3" fill="#1d1d1d" stroke="#2a2a2a" stroke-width="0.5"/>
+
+    <!-- Left lapel -->
+    <path d="M 300 250 L 252 310 L 200 360 L 180 400 L 180 272 Q 238 245 300 250 Z" fill="url(#lapelL)" stroke="#2e2e2e" stroke-width="0.6"/>
+    <!-- Right lapel -->
+    <path d="M 300 250 L 348 310 L 400 360 L 420 400 L 420 272 Q 362 245 300 250 Z" fill="url(#lapelR)" stroke="#2d2d2d" stroke-width="0.6"/>
+
+    <!-- Collar left -->
+    <path d="M 172 232 Q 220 215 260 210 L 300 220 L 252 280 L 200 310 L 180 272 Z" fill="url(#collar)" stroke="#333" stroke-width="0.6"/>
+    <!-- Collar right -->
+    <path d="M 428 232 Q 380 215 340 210 L 300 220 L 348 280 L 400 310 L 420 272 Z" fill="url(#collar)" stroke="#333" stroke-width="0.6"/>
+
+    <!-- Center zipper tape -->
+    <rect x="297" y="220" width="6" height="452" fill="#1a1a1a" stroke="#242424" stroke-width="0.4"/>
+    <!-- Zipper teeth -->
+    <line x1="300" y1="220" x2="300" y2="672" stroke="#202020" stroke-width="1" stroke-dasharray="3 2"/>
+    <!-- Zipper pull -->
+    <rect x="296" y="310" width="8" height="12" rx="2" fill="#1e1e1e" stroke="#2a2a2a" stroke-width="0.5"/>
+    <line x1="300" y1="316" x2="300" y2="328" stroke="#252525" stroke-width="1.5"/>
+
+    <!-- Left chest pocket -->
+    <path d="M 200 335 L 268 335 L 268 375 L 200 375 Z" fill="#1a1a1a" stroke="#252525" stroke-width="0.8"/>
+    <!-- Pocket zipper -->
+    <line x1="208" y1="335" x2="260" y2="335" stroke="#222" stroke-width="1.5"/>
+    <!-- Pocket pull -->
+    <rect x="230" y="330" width="10" height="8" rx="2" fill="#1e1e1e" stroke="#262626" stroke-width="0.5"/>
+
+    <!-- Right chest pocket -->
+    <path d="M 332 335 L 400 335 L 400 375 L 332 375 Z" fill="#1a1a1a" stroke="#252525" stroke-width="0.8"/>
+    <line x1="340" y1="335" x2="392" y2="335" stroke="#222" stroke-width="1.5"/>
+    <rect x="358" y="330" width="10" height="8" rx="2" fill="#1e1e1e" stroke="#262626" stroke-width="0.5"/>
+
+    <!-- Left lower pocket -->
+    <path d="M 188 495 Q 188 480 202 478 L 290 478 Q 296 480 296 495 L 296 560 Q 296 568 282 569 L 202 569 Q 188 568 188 555 Z" fill="#191919" stroke="#252525" stroke-width="0.7"/>
+    <!-- Right lower pocket -->
+    <path d="M 304 495 Q 304 480 318 478 L 398 478 Q 412 480 412 495 L 412 560 Q 412 568 398 569 L 318 569 Q 304 568 304 555 Z" fill="#191919" stroke="#252525" stroke-width="0.7"/>
+
+    <!-- Shoulder panels -->
+    <path d="M 172 232 Q 230 236 300 238 Q 370 236 428 232" fill="none" stroke="#262626" stroke-width="1"/>
+
+    <!-- Brand text (chest) -->
+    <text x="300" y="445" font-family="Arial, sans-serif" font-size="7.5" fill="#1e1e1e" text-anchor="middle" letter-spacing="5" font-weight="bold">DRIVEN</text>
+
+  </g>
+</svg>
