@@ -29,7 +29,7 @@ export async function POST(req: NextRequest) {
       .map((e) => e.trim());
 
     const { error } = await resend.emails.send({
-      from: "Driven Contact <onboarding@resend.dev>",
+      from: "Driven Contact <contact@driven2025.com>",
       to: toAddresses,
       replyTo: email,
       subject: `[Driven] ${name} からの問い合わせ`,
