@@ -2,7 +2,7 @@ export type Product = {
   id: number;
   label: string;
   tag: string;
-  size: "large" | "small" | "medium";
+  tileSize: "large" | "small" | "medium";
   name: string;
   description: string;
   price: number;
@@ -15,7 +15,7 @@ export const products: Product[] = [
     id: 1,
     label: "SS25 — 001",
     tag: "HOODIE",
-    size: "large",
+    tileSize: "large",
     name: "DRIVEN HOODIE",
     description:
       "重量感のあるコットンフリース。無骨で純粋。着ることは、主張することだ。",
@@ -27,7 +27,7 @@ export const products: Product[] = [
     id: 2,
     label: "SS25 — 002",
     tag: "JACKET",
-    size: "small",
+    tileSize: "small",
     name: "DRIVEN JACKET",
     description:
       "テクニカルファブリック。どんな状況にも対応する。弱さを許さない一着。",
@@ -39,7 +39,7 @@ export const products: Product[] = [
     id: 3,
     label: "SS25 — 003",
     tag: "TEE",
-    size: "small",
+    tileSize: "small",
     name: "DRIVEN TEE",
     description:
       "オーバーサイズシルエット。余白は強さだ。語らずして語るグラフィック。",
@@ -51,7 +51,7 @@ export const products: Product[] = [
     id: 4,
     label: "SS25 — 004",
     tag: "CARGO",
-    size: "medium",
+    tileSize: "medium",
     name: "DRIVEN CARGO",
     description:
       "機能性と美学の融合。余分なポケット、余分な言葉は要らない。動きが語る。",
@@ -63,7 +63,7 @@ export const products: Product[] = [
     id: 5,
     label: "SS25 — 005",
     tag: "KNIT",
-    size: "medium",
+    tileSize: "medium",
     name: "DRIVEN KNIT",
     description: "手で編まれた密度。時間が宿る素材。量産品には出せない温度がある。",
     price: 34000,
@@ -74,7 +74,7 @@ export const products: Product[] = [
     id: 6,
     label: "SS25 — 006",
     tag: "CAP",
-    size: "small",
+    tileSize: "small",
     name: "DRIVEN CAP",
     description:
       "六方向の構造。顔を隠せ、意図を見せろ。スタイルは目線から始まる。",

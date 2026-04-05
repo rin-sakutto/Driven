@@ -56,16 +56,16 @@ export default function Gallery() {
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.7, delay: i * 0.1 }}
               className={`group relative overflow-hidden cursor-pointer ${
-                item.size === "large" ? "row-span-2 md:col-span-1" : ""
+                item.tileSize === "large" ? "row-span-2 md:col-span-1" : ""
               }`}
             >
               <Link href={`/items/${item.id}`} className="block h-full">
                 {/* Card */}
                 <div
                   className={`${
-                    item.size === "large"
+                    item.tileSize === "large"
                       ? "h-[400px] md:h-[500px]"
-                      : item.size === "medium"
+                      : item.tileSize === "medium"
                       ? "h-[220px] md:h-[260px]"
                       : "h-[180px] md:h-[220px]"
                   } relative flex items-end p-4 md:p-6 transition-all duration-700 group-hover:brightness-125`}
