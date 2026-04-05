@@ -41,7 +41,7 @@ export async function POST(req: NextRequest) {
       process.env.RESEND_FROM_EMAIL ?? "Driven Contact <onboarding@resend.dev>";
 
     const { error } = await resend.emails.send({
-      from: fromAddress,
+      from: "Driven Contact <contact@driven2025.com>",
       to: toAddresses,
       replyTo: email,
       subject: `[Driven] ${name} からの問い合わせ`,
