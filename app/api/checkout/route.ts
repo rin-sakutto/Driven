@@ -2,6 +2,9 @@ import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 import { getProduct } from "../../lib/products";
 
+/** 1ドルあたりの日本円換算レート（固定） */
+const USD_TO_JPY_RATE = 150;
+
 /** Stripe Checkout Session を作成し、決済ページの URL を返す */
 export async function POST(req: NextRequest) {
   try {
@@ -46,8 +49,9 @@ export async function POST(req: NextRequest) {
               name: product.name,
               description: size ? `Size: ${size}` : product.description,
             },
-            // product.price の値をそのまま円単位として扱う（JPY はゼロ小数点通貨）
-            unit_amount: product.price,
+            // ドル建て価格を日本円に変換（USD_TO_JPY_RATE 固定）
+            // JPY はゼロ小数点通貨のため整数で渡す
+            unit_amount: Math.round(product.price * USD_TO_JPY_RATE),
           },
           quantity: 1,
         },

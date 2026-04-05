@@ -46,7 +46,7 @@ export const products: Product[] = [
     name: "DRIVEN TEE",
     description:
       "オーバーサイズシルエット。余白は強さだ。語らずして語るグラフィック。",
-    price: 80,
+    price: 30,
     availableSizes: ["S", "M", "L", "XL", "XXL"],
     shade: "#0d0d0d",
     images: [
