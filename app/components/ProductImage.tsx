@@ -4,9 +4,12 @@ import { useState, useRef } from "react";
 import Image from "next/image";
 import type { Product } from "../lib/products";
 
-type Props = { product: Product };
+type Props = {
+  product: Product;
+  selectedColor?: string | null;
+};
 
-export default function ProductImage({ product }: Props) {
+export default function ProductImage({ product, selectedColor }: Props) {
   const [imgIndex, setImgIndex] = useState(0);
   const touchStartX = useRef<number | null>(null);
 
@@ -18,8 +21,13 @@ export default function ProductImage({ product }: Props) {
       : "h-[340px] md:h-[440px]";
 
   const images = product.images ?? [];
-  const src = images[imgIndex] ?? "";
+  const colorImg =
+    selectedColor
+      ? (product.colors?.find((c) => c.name === selectedColor)?.image ?? null)
+      : null;
+  const src = colorImg ?? (images[imgIndex] ?? "");
   const isExternal = src.startsWith("http");
+  const hasColors = (product.colors?.length ?? 0) > 0;
 
   function prev() {
     setImgIndex((i) => (i - 1 + images.length) % images.length);
@@ -75,7 +83,7 @@ export default function ProductImage({ product }: Props) {
             />
           )}
 
-          {images.length > 1 && (
+          {images.length > 1 && !hasColors && (
             <>
               {/* Prev / Next arrow buttons */}
               <button

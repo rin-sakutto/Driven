@@ -9,20 +9,24 @@ import { products, type Product } from "../lib/products";
 type CardProps = { item: Product; index: number; isInView: boolean };
 
 function GalleryCard({ item, index, isInView }: CardProps) {
-  const [imgIndex, setImgIndex] = useState(0);
-  const touchStartX = useRef<number | null>(null);
-  const images = item.images ?? [];
+  const hasColors = (item.colors?.length ?? 0) > 0;
+  const colorImages = hasColors
+    ? (item.colors ?? []).map((c) => ({ src: c.image, label: c.name }))
+    : (item.images ?? []).map((src) => ({ src, label: "" }));
 
-  function prevImg(e: React.MouseEvent | React.TouchEvent) {
+  const [slideIndex, setSlideIndex] = useState(0);
+  const touchStartX = useRef<number | null>(null);
+
+  function prevSlide(e: React.MouseEvent | React.TouchEvent) {
     e.stopPropagation();
     e.preventDefault();
-    setImgIndex((i) => (i - 1 + images.length) % images.length);
+    setSlideIndex((i) => (i - 1 + colorImages.length) % colorImages.length);
   }
 
-  function nextImg(e: React.MouseEvent | React.TouchEvent) {
+  function nextSlide(e: React.MouseEvent | React.TouchEvent) {
     e.stopPropagation();
     e.preventDefault();
-    setImgIndex((i) => (i + 1) % images.length);
+    setSlideIndex((i) => (i + 1) % colorImages.length);
   }
 
   function handleTouchStart(e: React.TouchEvent) {
@@ -33,12 +37,13 @@ function GalleryCard({ item, index, isInView }: CardProps) {
     if (touchStartX.current === null) return;
     const delta = e.changedTouches[0].clientX - touchStartX.current;
     if (Math.abs(delta) > 40) {
-      delta < 0 ? nextImg(e) : prevImg(e);
+      delta < 0 ? nextSlide(e) : prevSlide(e);
     }
     touchStartX.current = null;
   }
 
-  const src = images[imgIndex] ?? "";
+  const current = colorImages[slideIndex];
+  const src = current?.src ?? "";
   const isExternal = src.startsWith("http");
 
   return (
@@ -52,7 +57,6 @@ function GalleryCard({ item, index, isInView }: CardProps) {
       }`}
     >
       <Link href={`/items/${item.id}`} className="block h-full">
-        {/* Card */}
         <div
           className={`${
             item.tileSize === "large"
@@ -65,65 +69,88 @@ function GalleryCard({ item, index, isInView }: CardProps) {
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
         >
-          {/* Noise texture overlay */}
+          {/* Noise texture */}
           <div className="absolute inset-0 opacity-[0.03] bg-[url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noise)%22/%3E%3C/svg%3E')]" />
 
-          {/* Product images */}
-          {images.length > 0 && (
+          {/* Image */}
+          {src && (
+            isExternal ? (
+              <Image
+                key={src}
+                src={src}
+                alt={`${item.tag} — ${item.label}`}
+                fill
+                className="object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"
+                unoptimized
+              />
+            ) : (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                key={src}
+                src={src}
+                alt={`${item.tag} — ${item.label}`}
+                className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"
+              />
+            )
+          )}
+
+          {/* Slider controls (colors or multiple images) */}
+          {colorImages.length > 1 && (
             <>
-              {isExternal ? (
-                <Image
-                  key={src}
-                  src={src}
-                  alt={`${item.tag} — ${item.label}`}
-                  fill
-                  className="object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"
-                  unoptimized
-                />
+              <button
+                onClick={prevSlide}
+                aria-label="前"
+                className="absolute left-2 top-1/2 -translate-y-1/2 z-20 w-7 h-7 flex items-center justify-center rounded-full bg-black/50 text-white/80 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+              >
+                ‹
+              </button>
+              <button
+                onClick={nextSlide}
+                aria-label="次"
+                className="absolute right-2 top-1/2 -translate-y-1/2 z-20 w-7 h-7 flex items-center justify-center rounded-full bg-black/50 text-white/80 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+              >
+                ›
+              </button>
+
+              {/* Color swatches (colorsがある場合) or dot nav */}
+              {hasColors ? (
+                <div className="absolute bottom-14 left-0 right-0 flex justify-center gap-2 z-20 px-4">
+                  {(item.colors ?? []).map((c, idx) => (
+                    <button
+                      key={c.name}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        e.preventDefault();
+                        setSlideIndex(idx);
+                      }}
+                      aria-label={c.name}
+                      className={`px-2 py-0.5 text-[9px] tracking-widest uppercase border transition-all duration-200 ${
+                        slideIndex === idx
+                          ? "border-white text-white bg-white/10"
+                          : "border-white/20 text-white/40 hover:border-white/50 hover:text-white/70"
+                      }`}
+                    >
+                      {c.name}
+                    </button>
+                  ))}
+                </div>
               ) : (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  key={src}
-                  src={src}
-                  alt={`${item.tag} — ${item.label}`}
-                  className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"
-                />
-              )}
-              {images.length > 1 && (
-                <>
-                  {/* Prev / Next arrows (visible on hover) */}
-                  <button
-                    onClick={prevImg}
-                    aria-label="前の画像"
-                    className="absolute left-2 top-1/2 -translate-y-1/2 z-20 w-7 h-7 flex items-center justify-center rounded-full bg-black/50 text-white/80 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-                  >
-                    ‹
-                  </button>
-                  <button
-                    onClick={nextImg}
-                    aria-label="次の画像"
-                    className="absolute right-2 top-1/2 -translate-y-1/2 z-20 w-7 h-7 flex items-center justify-center rounded-full bg-black/50 text-white/80 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-                  >
-                    ›
-                  </button>
-                  {/* Dot navigation */}
-                  <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex gap-1.5 z-20">
-                    {images.map((_, idx) => (
-                      <button
-                        key={idx}
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          e.preventDefault();
-                          setImgIndex(idx);
-                        }}
-                        className={`w-2 h-2 rounded-full transition-colors duration-200 ${
-                          imgIndex === idx ? "bg-white" : "bg-white/30"
-                        }`}
-                        aria-label={`View image ${idx + 1}`}
-                      />
-                    ))}
-                  </div>
-                </>
+                <div className="absolute bottom-14 left-1/2 -translate-x-1/2 flex gap-1.5 z-20">
+                  {colorImages.map((_, idx) => (
+                    <button
+                      key={idx}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        e.preventDefault();
+                        setSlideIndex(idx);
+                      }}
+                      className={`w-2 h-2 rounded-full transition-colors duration-200 ${
+                        slideIndex === idx ? "bg-white" : "bg-white/30"
+                      }`}
+                      aria-label={`View image ${idx + 1}`}
+                    />
+                  ))}
+                </div>
               )}
             </>
           )}
@@ -142,7 +169,7 @@ function GalleryCard({ item, index, isInView }: CardProps) {
                   {item.tag}
                 </span>
                 <span className="block text-white/70 text-xs tracking-widest mt-1">
-                  ${item.price.toLocaleString()}
+                  ¥{item.price.toLocaleString()}
                 </span>
               </div>
               <motion.div

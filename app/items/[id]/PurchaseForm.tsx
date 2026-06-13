@@ -7,7 +7,13 @@ import PaymentButton from "../../components/PaymentButton";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-export default function PurchaseForm({ product }: { product: Product }) {
+type Props = {
+  product: Product;
+  selectedColor?: string | null;
+  onColorChange?: (color: string) => void;
+};
+
+export default function PurchaseForm({ product, selectedColor, onColorChange }: Props) {
   const [selectedSize, setSelectedSize] = useState("");
   const [form, setForm] = useState({ name: "", email: "", address: "" });
   const [loading, setLoading] = useState(false);
@@ -19,6 +25,7 @@ export default function PurchaseForm({ product }: { product: Product }) {
   const validate = () => {
     const next: Record<string, string> = {};
     if (!selectedSize) next.size = "サイズを選択してください";
+    if (product.colors && !selectedColor) next.color = "カラーを選択してください";
     if (!form.name.trim()) next.name = "お名前を入力してください";
     if (!form.email.trim()) next.email = "メールアドレスを入力してください";
     else if (!EMAIL_REGEX.test(form.email))
@@ -41,7 +48,7 @@ export default function PurchaseForm({ product }: { product: Product }) {
       const res = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ productId: product.id, size: selectedSize }),
+        body: JSON.stringify({ productId: product.id, size: selectedSize, color: selectedColor }),
       });
 
       const data = await res.json();
@@ -76,6 +83,43 @@ export default function PurchaseForm({ product }: { product: Product }) {
       </div>
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-8">
+        {/* Color selector */}
+        {product.colors && product.colors.length > 0 && (
+          <fieldset className="flex flex-col gap-3 border-none p-0 m-0">
+            <legend className="text-white/20 text-[10px] tracking-[0.3em] uppercase mb-1">
+              Color
+            </legend>
+            <div role="radiogroup" aria-label="カラーを選択" className="flex flex-wrap gap-3">
+              {product.colors.map((c) => (
+                <motion.button
+                  key={c.name}
+                  type="button"
+                  role="radio"
+                  aria-checked={selectedColor === c.name}
+                  onClick={() => {
+                    onColorChange?.(c.name);
+                    clearError("color");
+                  }}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.97 }}
+                  className={`px-5 py-2 text-xs tracking-widest uppercase border transition-all duration-300 ${
+                    selectedColor === c.name
+                      ? "border-white bg-white text-black"
+                      : "border-white/20 text-white/50 hover:border-white/50 hover:text-white/80"
+                  }`}
+                >
+                  {c.name}
+                </motion.button>
+              ))}
+            </div>
+            {errors.color && (
+              <p role="alert" className="text-red-400/80 text-[10px] tracking-widest">
+                {errors.color}
+              </p>
+            )}
+          </fieldset>
+        )}
+
         {/* Size selector */}
         <fieldset className="flex flex-col gap-3 border-none p-0 m-0">
           <legend className="text-white/20 text-[10px] tracking-[0.3em] uppercase mb-1">
@@ -195,6 +239,12 @@ export default function PurchaseForm({ product }: { product: Product }) {
             <span>Item</span>
             <span>{product.name}</span>
           </div>
+          {selectedColor && (
+            <div className="flex justify-between text-xs tracking-widest text-white/40 uppercase">
+              <span>Color</span>
+              <span>{selectedColor}</span>
+            </div>
+          )}
           {selectedSize && (
             <div className="flex justify-between text-xs tracking-widest text-white/40 uppercase">
               <span>Size</span>

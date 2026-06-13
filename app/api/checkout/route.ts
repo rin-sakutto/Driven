@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
 
     const stripe = new Stripe(secretKey);
 
-    const { productId, size } = await req.json();
+    const { productId, size, color } = await req.json();
 
     const product = getProduct(Number(productId));
     if (!product) {
@@ -47,7 +47,10 @@ export async function POST(req: NextRequest) {
             currency: "jpy",
             product_data: {
               name: product.name,
-              description: size ? `Size: ${size}` : product.description,
+              description:
+                [size && `Size: ${size}`, color && `Color: ${color}`]
+                  .filter(Boolean)
+                  .join(" / ") || product.description,
             },
             // ドル建て価格を日本円に変換（USD_TO_JPY_RATE 固定）
             // JPY はゼロ小数点通貨のため整数で渡す
