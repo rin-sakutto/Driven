@@ -16,7 +16,7 @@ export async function POST(req: NextRequest) {
 
     const stripe = new Stripe(secretKey);
 
-    const { productId, size } = await req.json();
+    const { productId, size, color } = await req.json();
 
     const product = getProduct(Number(productId));
     if (!product) {
@@ -44,7 +44,10 @@ export async function POST(req: NextRequest) {
             currency: "jpy",
             product_data: {
               name: product.name,
-              description: size ? `Size: ${size}` : product.description,
+              description:
+                [size && `Size: ${size}`, color && `Color: ${color}`]
+                  .filter(Boolean)
+                  .join(" / ") || product.description,
             },
             // product.price の値をそのまま円単位として扱う（JPY はゼロ小数点通貨）
             unit_amount: product.price,

@@ -1,8 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getProduct } from "../../lib/products";
-import PurchaseForm from "./PurchaseForm";
-import ProductImage from "../../components/ProductImage";
+import ProductDetail from "./ProductDetail";
 
 type Props = { params: Promise<{ id: string }> };
 
@@ -30,30 +29,7 @@ export default async function ProductPage({ params }: Props) {
       </nav>
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 pt-32 pb-32">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-start">
-          {/* Left — product display */}
-          <div>
-            <ProductImage product={product} />
-
-            {/* Product info below image */}
-            <div className="mt-8 space-y-4 border-t border-white/10 pt-8">
-              <div className="flex items-end justify-between">
-                <h1 className="text-xl md:text-2xl font-black tracking-wider text-white">
-                  {product.name}
-                </h1>
-                <span className="text-white text-lg font-black tracking-widest">
-                  ${product.price.toLocaleString()}
-                </span>
-              </div>
-              <p className="text-white/40 text-sm leading-relaxed">
-                {product.description}
-              </p>
-            </div>
-          </div>
-
-          {/* Right — purchase form (Client Component) */}
-          <PurchaseForm product={product} />
-        </div>
+        <ProductDetail product={product} />
       </div>
     </main>
   );
